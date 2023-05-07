@@ -7,7 +7,10 @@
 　下記を記述したdockerfileを作成する
 ```
 FROM intel/dlstreamer:devel
+USER root
+RUN mkdir -p /var/lib/apt/lists/partial
 RUN apt-get update && apt-get install -y gstreamer1.0-plugins-ugly
+RUN apt-get update && apt-get install -y gstreamer1.0-plugins-good
 ```
 続いて、このDockerfile
 

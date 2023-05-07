@@ -1,13 +1,13 @@
 #!bin/bash
 set -e
 
-INPUT=$"https://github.com/intel-iot-devkit/sample-videos/raw/master/bottle-detection.mp4"
+INPUT=$"https://github.com/intel-iot-devkit/sample-videos/raw/master/face-demographics-walking.mp4"
 DEVICE='CPU'
 SOURCE_ELEMENT="urisourcebin buffer-size=1024 uri=${INPUT}"
 
 
-rm -f output.json
-SINK_ELEMENT="gvawatermark ! gvametaconvert add-tensor-data=true ! gvametapublish file-format=json-lines file-path=output.json ! videoconvert ! gvafpscounter ! autovideosink sync=false"
+rm -f output2.json
+SINK_ELEMENT="gvawatermark ! gvametaconvert add-tensor-data=true ! gvametapublish file-format=json-lines file-path=output2.json ! videoconvert ! gvafpscounter ! autovideosink sync=false"
 
 
 HPE_MODEL_PATH='human-pose-estimation-0001.xml'

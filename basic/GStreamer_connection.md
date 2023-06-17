@@ -1,0 +1,13 @@
+# GStreamerを用いた動画ストリーミング方法
+## コマンドライン
+
+### 送信側
+```
+gst-launch-1.0 -e videotestsrc ! videoconvert ! x264enc ! video/x-h264,profile=baseline ! rtph264pay ! udpsink host=192.168.0.28 port=100
+```
+
+
+### 受信側
+```
+gst-launch-1.0 udpsrc port=100 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96 ! rtph264depay ! decodebin ! videoconvert ! appsink
+```
